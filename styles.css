@@ -247,6 +247,11 @@ h1 {
 /* Adjust clock button layout for very narrow screens */
 @media (max-width: 280px) {
 
+    main {
+        justify-content: flex-start;
+        padding-top: 1rem;
+    }
+
     .clock-button {
         display: grid;
         grid-template-columns: 18px 50px;
