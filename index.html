@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basketball Scoreboard</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <main>
+        <h1>Basketball Scoreboard</h1>
+        <div class="scoreboard-container">
+            <section class="game-info">
+                <h2>Game Time</h2>
+                <p id="gameClock">12:00</p>
+                <p id="gamePeriod" aria-live="polite">Quarter 1</p>
+                <div class="clock-controls">
+                    <button
+                        id="toggleClock"
+                        class="clock-button"
+                        type="button">
+                        <svg
+                            id="clockIcon"
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            >
+                            <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/>
+                        </svg>
+                        <span id="clockButtonText">
+                            Start
+                        </span>
+                    </button>
+                    <button 
+                        id="nextPeriod" 
+                        class="clock-button" 
+                        type="button"
+                        >
+                        Next Period
+                    </button>
+                </div>
+            </section>
+
+            <div id="scoreboard">
+                <section id="teamA" class="team">
+                    <h2>Team A</h2>
+                    <p id="scoreA" aria-live="polite">0</p>
+                    <div class="score-buttons">
+                        <button class="score-button" data-points="1" type="button">
+                            + 1
+                        </button>
+                        <button class="score-button" data-points="2" type="button">
+                            + 2
+                        </button>
+                        <button class="score-button" data-points="3" type="button">
+                            + 3
+                        </button>
+                    </div>
+                </section>
+
+                <section class="team" id="teamB">
+                    <h2>Team B</h2>
+                    <p id="scoreB" aria-live="polite">0</p>
+                    <div class="score-buttons">
+                        <button class="score-button" data-points="1" type="button">
+                            + 1
+                        </button>
+                        <button class="score-button" data-points="2" type="button">
+                            + 2
+                        </button>
+                        <button class="score-button" data-points="3" type="button">
+                            + 3
+                        </button>
+                    </div>
+                </section>
+            </div>
+            <button 
+                id="undoScore" 
+                type="button"
+                aria-label="Undo last score"
+                title="Undo last score"
+                disabled
+                >
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    >
+                    <path d="M9 14 4 9l5-5" />
+                    <path d="M4 9h10a6 6 0 0 1 0 12h-2" />
+                </svg>
+                    Undo last score
+            </button>
+            <button id="newGame" type="button">New Game</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

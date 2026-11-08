@@ -1,0 +1,262 @@
+/* Page layout */
+
+body {
+    background-color: #080b12;
+    margin: 0;
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #cbd5e1;
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+    font-weight: 600;
+}
+
+/* Scoreboard container */
+
+.scoreboard-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem 1rem 1.5rem;
+    box-sizing: border-box;
+    background-color: #242936;
+    border-radius: 0.75rem;
+}
+
+/* Game clock and period */
+
+.game-info {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    color: aliceblue;
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.game-info h2,
+.game-info p {
+    margin: 0.5rem 0;
+}
+
+#gameClock {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #F6C65B;
+    background-color: #101010;
+    padding: 1rem 0.5rem;
+    border-radius: 0.25em;
+}
+
+.clock-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem;
+}
+
+/* Team scores */
+
+#scoreboard {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    width: 100%;
+}
+
+.team {
+    text-align: center;
+    min-width: 0;
+    padding: 0;
+}
+
+.team h2, 
+.team p {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: aliceblue;
+}
+
+.team h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.team p {
+    font-size: 4rem;
+    background-color: #101010;
+    color: #ff4d4d;
+    text-shadow: 0 0 10px #ff4d4d;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 2px solid #444;
+    border-radius: 0.25em;
+}
+
+/* Button styles */
+
+.score-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    white-space: nowrap;
+}
+
+.clock-button, 
+.score-button, 
+#undoScore,
+#newGame {
+    background-color: #343B4A;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 8px;
+    border: none;
+    border-radius: 0.5em;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background-color 0.15s ease;
+    cursor: pointer;
+}
+
+.clock-button,
+#undoScore {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+#undoScore {
+    width: 100%;
+}
+
+.clock-button svg, 
+#undoScore svg {
+    flex-shrink: 0;
+}
+
+/* Disabled */
+
+.clock-button:disabled,
+.score-button:disabled, 
+#undoScore:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Hover */
+
+.clock-button:hover:not(:disabled),
+.score-button:hover:not(:disabled),
+#undoScore:hover:not(:disabled) {
+    background-color: #505A6B;
+}
+
+/* Active */
+
+.clock-button:active:not(:disabled),
+.score-button:active:not(:disabled),
+#undoScore:active:not(:disabled),
+#newGame:active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    transform: translateY(2px);
+}
+
+/* Keyboard focus */
+
+.clock-button:focus-visible, 
+.score-button:focus-visible,
+#newGame:focus-visible, 
+#undoScore:focus-visible
+{
+    outline: 3px solid magenta;
+    outline-offset: 3px;
+}
+
+/* New game button */
+
+#newGame {
+    width: 100%;
+}
+
+#newGame:hover {
+    background-color: #BF4B4B;
+}
+
+
+/* Responsive layout */
+
+/* Stack teams vertically on narrow screens */
+@media (max-width: 500px) {
+    #scoreboard {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .team {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        column-gap: 0.75rem;
+        align-items: center;
+    }
+
+    .team h2 {
+        grid-column: 1 / -1;
+    }
+
+    .team p {
+        grid-column: 1;
+        margin: 0;
+    }
+
+    .score-buttons {
+        display: grid;
+        grid-column: 2;
+        grid-template-rows: repeat(3, minmax(0, 1fr));
+        gap: 0.25rem;
+        align-self: stretch;
+    }
+
+    .score-button {
+        padding: 4px 8px;
+    }
+}
+
+
+/* Adjust clock button layout for very narrow screens */
+@media (max-width: 280px) {
+
+    .clock-button {
+        display: grid;
+        grid-template-columns: 18px 50px;
+        justify-content: center;
+        align-items: center;
+        column-gap: 0.5rem;
+    }
+
+    #nextPeriod {
+        display: flex;
+        justify-content: center;
+    }   
+}
