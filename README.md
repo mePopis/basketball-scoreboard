@@ -9,7 +9,7 @@ This project was developed as part of my frontend web development journey, with 
 
 ## Live Demo
 
-[View the Basketball Scoreboard](URL)
+[View the Basketball Scoreboard](https://mepopis.github.io/basketball-scoreboard/)
 
 ## Screenshots
 
